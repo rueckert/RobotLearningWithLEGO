@@ -14,8 +14,8 @@ ev3 = legoev3('usb');
 flag_run = false;
 % wait until centered button is pressed (start signal)
 while ~flag_run
-   flag_run = readButton(ev3, 'center');
-   pause(0.1);
+    flag_run = readButton(ev3, 'up');
+    pause(0.1);
 end
 
 % start motors
@@ -25,9 +25,10 @@ while flag_run
     % TODO implement behavior
     
     % check if programm has to terminate
-    if readButton(ev3, 'center')
-       flag_run = false; 
+    if readButton(ev3, 'up')
+        flag_run = false;
     end
+    pause(0.01);
 end
 
 % stop motors
