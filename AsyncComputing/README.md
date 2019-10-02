@@ -4,7 +4,7 @@ Instead providing only blocking calls in the API, the communication with the EV3
 Below the Async API in introduced in detail.
 
 ## Requierements
-The Matlab Addon for the EV3 brick has do be installed: [https://de.mathworks.com/hardware-support/lego-mindstorms-ev3-matlab.html](https://de.mathworks.com/hardware-support/lego-mindstorms-ev3-matlab.html)
+The Matlab Support Package for the EV3 brick has do be installed: [https://de.mathworks.com/hardware-support/lego-mindstorms-ev3-matlab.html](https://de.mathworks.com/hardware-support/lego-mindstorms-ev3-matlab.html)
 
 ## API
 Below the methods provided by this package are shown. 
@@ -12,7 +12,7 @@ In general you can allways use the blocking calls from the Matlab Support Packag
 If activaed sensor values are called in the background from the EV3 and are stored. By reading the stored values one can read the latest data from the EV3 avoiding blocking calls
 
 ### Connect to EV3 brick
-You are able to build a connection to the EV3 brick via WiFi, Bluetooth and USB using the following commands respectivly.
+You are able to build a connection to the EV3 brick via WiFi, Bluetooth and USB using the following commands respectivly. Please note that the object created by `connectEV3()` has to be deleted in the end, using for example `clear myev3`. Otherwise new connections will fail.
 ```matlab
 % WiFi
 ip_addr = xxx.xxx.xxx.xxx;
