@@ -26,6 +26,10 @@
 % ########################################
 classdef gyroSensorAS < legoDeviceAS & gyroSensor
     
+    properties(Access = 'public')
+       mode = 1; % 1 = rotation, 2 = rotation rate 
+    end
+    
     methods ( Access = 'public' )
         
         %***************************
@@ -54,7 +58,7 @@ classdef gyroSensorAS < legoDeviceAS & gyroSensor
               end
               obj.legoev3Obj = legoev3Obj;
               
-              obj.readValueFunc = @readRotationAngle;
+              obj.readValueFunc = @readGyro;
               
               
           end
@@ -62,7 +66,16 @@ classdef gyroSensorAS < legoDeviceAS & gyroSensor
     end
     
     methods (Access = 'private')
+        function data = readGyro(obj)
         
+           if obj.mode == 1
+               data = readRotationAngle(obj);
+           elseif obj.mode == 2
+               data = readRotationRate(obj);
+           else
+               error('Unkown mode while reading gyro-sensor!')
+           end
+        end
         
     end
 end
